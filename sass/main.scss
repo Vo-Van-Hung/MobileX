@@ -1,0 +1,32 @@
+
+// import all scss
+
+// helpers
+@import './Helpers/variables';
+@import './Helpers/mixin';
+
+// base
+@import './Base/reset';
+
+// components
+@import './Components/button';
+@import './Components/input';
+
+// layouts
+@import './Layouts/header';
+@import './Layouts/products';
+@import './Layouts/footer';
+@import './Layouts/productItem';
+@import './Layouts/cart';
+
+// pages
+@import './Pages/home';
+@import './Pages/about';
+
+// themes
+// @import './themes/dark';
+// @import './themes/light';
+
+
+// vendors
+@import './Vendors/slice';

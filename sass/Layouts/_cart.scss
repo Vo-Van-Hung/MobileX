@@ -1,0 +1,68 @@
+.cart {
+    background-color: #f2f4f7;
+    padding: 80px;
+}
+
+.cart__content {
+    border-radius: 20px;
+    background-color: white;
+}
+
+.cart__item__top {
+    .cart__title {
+        padding: 50px;
+        h1 {
+            background-color: rgb(241 248 254);
+            padding: 20px;
+            border: solid 1px blue;
+            border-radius: 30px;
+            color: blue;
+        }
+    }
+}
+
+.cart__item__bottom {
+    .quanlity__box {
+        .quantity__btn {
+            padding: 0 30px;
+            button {
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+.total__quanlity {
+    padding: 30px;
+    p {
+        font-size: 25px;
+    }
+}
+
+.pay {
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+
+    h1 {
+        font-weight: bold;
+        font-size: 25px;
+        padding-bottom: 10px;
+    }
+
+    p {
+        padding: 10px 0;
+    }
+
+    button {
+        width: 100%;
+        background-color: orange;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 10px;
+        color: white;
+        
+    }
+}

@@ -1,0 +1,136 @@
+.products {
+    background: url("../../img/bg-mainv2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+    min-height: 100vh;
+}
+
+.section-title {
+    margin-bottom: 70px;
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1d365e;
+    letter-spacing: 0.015rem;
+}
+
+.products__content {
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding: 30px;
+}
+
+.cardPhone {
+    // box-shadow:
+    //     6px 6px 12px #e2ebfc,
+    //     -6px -6px 12px #fff;
+    // background-color: #f5f9fe;
+    // border: 1px solid yellow;
+    // border-radius: 50%;
+    // width: 70%;
+    border: 1px solid #eaecf0;
+    border-radius: 10px;
+    height: 100%;
+    padding-top: 30px;
+}
+
+// .card {
+//     position: relative;
+//     display: flex;
+//     flex-direction: column;
+//     min-width: 0;
+//     word-wrap: break-word;
+//     background-clip: border-box;
+//     // border: 1px solid rgba(0, 0, 0, 0.125);
+//     border-radius: 0.25rem;
+// }
+
+// .cardPhone img {
+//     box-shadow:
+//         6px 6px 12px #e2ebfc,
+//         -6px -6px 12px #fff;
+//     border-radius: 8px;
+// }
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.products {
+    .products__content {
+        .cardPhone {
+            .cardPhone__title {
+                font-size: 30px;
+                font-weight: 700;
+                color: red;
+            }
+        }
+    }
+}
+
+.products {
+    .products__content {
+        .cardPhone {
+            .cardPhone__name {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.cardPhone .cardPhone__text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1d365e;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.cardPhone {
+    .cardPhone__rating {
+        color: #f9d412;
+        font-size: 13px;
+    }
+}
+
+.btnPhone-shadow {
+    background: #f5f9fe;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    letter-spacing: 0.03rem;
+    font-size: 10px;
+    font-weight: 600;
+    color: #2a73dd;
+    box-shadow:
+        2px 2px 4px #e2ebfc,
+        -2px -2px 4px #fff;
+    transition: 0.5s;
+}
+
+.products__content {
+    .cardPhone {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+header {
+    #productFilter {
+        border: 1px solid none;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: white;
+        font-size: 15px;
+    }
+}
