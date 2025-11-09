@@ -239,173 +239,111 @@ typeOfPhone();
 
 
 // Initialize variables
-let cartCountElement = document.getElementById("cartCount");
-
-// Function to update the visible count
-function updateCartCount() {
-    const count = localStorage.getItem("cartCount") || 0;
-    cartCountElement.textContent = count;
-}
-
-// Listen for clicks on the Add to Cart button
-// document.addEventListener("click", (e) => {
-//     const button = e.target.closest("#addToCartBtn");
-//     if (!addToCartBtn) return; // ignore clicks on other elements
-//     if (button) {
-//         // Get current count from localStorage
-//         let count = localStorage.getItem("cartCount") || 0;
-//         count = parseInt(count) + 1;
-
-//         // Save new count
-//         localStorage.setItem("cartCount", count);
-
-//         // Update UI immediately
-//         updateCartCount();
-
-//     }
-// });
-
-// Sync across other tabs (optional)
-window.addEventListener("storage", updateCartCount);
-window.addEventListener("load", () => {
-    localStorage.removeItem("cartCount");
-});
 
 
-//
-// document.addEventListener("DOMContentLoaded", () => {
-//     const btnCart = document.getElementsByClassName("addToCartBtn");
+const renderAddCart = (cart) => {
+    let cartItemHtml = "";
 
-//     btnCart.addEventListener("click", (e) => {
-//         const id = e.target.id;
-//         console.log("Mon ~ id: ", id);
-//     })
-// });
 
-// document.addEventListener("click", (e) => {
-//     if (e.target.closest(".addToCartBtn")) {
-//         const id = e.target.closest(".addToCartBtn").id;
-//         console.log("mon ~ id: ", id);
-//         localStorage.setItem("selectedCart", id);
-//     }
-// });
-
-// Storage.setItem("products", JSON.stringify(response.data));
-
-// let cart = [];
-const renderCart = (cartItem) => {
-    let cartBodyHTML = "";
-    const pbodyCart = document.getElementById("cartItemBottom");
-
-    cartItem.forEach(item => {
-        cartBodyHTML += `
+    cart.forEach(item => {
+        cartItemHtml += `
                 <div class="grid grid-cols-12">
-                        <div class="col-span-3">
-                            <img src=${item.img} alt="...">
-                        </div>
-                        <div class="col-span-6">
-                            <h1>Điện thoại ${item.name} 14T 5G 12GB/256GB</h1>
-                            <p>${item.screen}</p>
-                            <p>${item.backCamera}</p>
-                            <p>${item.frontCamera}</p>
-                            <p>Flash sale kết đã kết thúc</p>
-                            <p>Khuyến mãi</p>
-                        </div>
-                        <div class="col-span-3">
-                            <p>$1000</p>
-                        </div>
+                    <div class="col-span-3">
+                        <img src=${item.img} alt="">
                     </div>
-            `
+                    <div class="col-span-6">
+                        <h1>Điện thoại Iphone 14T 5G 12GB/256GB</h1>
+                        <p>Màu sắc</p>
+                        <p>Flash sale kết đã kết thúc</p>
+                        <p>Khuyến mãi</p>
+                    </div>
+                    <div class="col-span-3">
+                        <p>$1000</p>
+                    </div>
+                </div>
+        `
 
     });
 
+    const pbody = document.getElementById("cartItemBottom");
+    pbody.innerHTML = cartItemHtml;
 
-    pbodyCart.innerHTML = cartBodyHTML;
+
 }
 
-const getCartItem = () => {
 
-
-    const idCart = localStorage.getItem("selectedCart");
-    console.log("Mon ~ idCart", idCart);
-    const data = localStorage.getItem("products");
-    const products = JSON.parse(data);
-    console.log("Mon ~ products: ", products);
-
-    const selectedCartItem = products.find((cart) => cart.id === idCart);
-    console.log("Mon ~ selectedCartItem: ", selectedCartItem);
-
-    if (!selectedCartItem) {
-        console.log("Product not found in cart");
-        return;
-    }
-
-    // Get cart from localStorage or empty array
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-    const { name, price, screen, blackCamera, frontCamera, img, desc, type } = selectedCartItem;
-
-    const cartItem = new CartItem(name, price, screen, blackCamera, frontCamera, img, desc, type);
-
-    cart.push(cartItem);
-    console.log("Mon ~ cart: ", cart);
-
-    // Save cart to localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    renderCart(cart);
-}
-
-// getCartItem()
-
-
-
-// const btnCart = document.querySelector(".total__cart");
-// btnCart.addEventListener("click", (e) => {
-//     // e.preventDefault(); // optional, stops the link from opening
-//     getCartItem();
-// })
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const btnCart = document.querySelector(".total__cart");
-//     if (!btnCart) return; // safety check
-
-//     btnCart.addEventListener("click", (e) => {
-//         e.preventDefault(); // prevent the <a> from navigating immediately
-//         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-//         renderCart(cart);
-//     });
-// });
 
 document.addEventListener("click", (e) => {
     const btn = e.target.closest(".addToCartBtn");
-    console.log("Mon ~ tbn: ", btn)
+
+    if (!btn) return;
+
+    // Get current count
+    let count = Number(localStorage.getItem("cartCount")) || 0;
+
+
+    // Increase it
+    count++;
+
+    // Save back to localStorage
+    localStorage.setItem("cartCount", count);
+
+    // console.log("New cart count:", count);
+
+
+    // Update UI immediately
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) cartCountEl.textContent = count;
+
+});
+
+let cart = [];
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".addToCartBtn");
+
     if (!btn) return;
 
     const id = btn.id;
-    const products = JSON.parse(localStorage.getItem("products") || "[]");
-    const selectedItem = products.find(p => p.id == id);
-    if (!selectedItem) return;
+    console.log("Product ID:", id);
 
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(selectedItem);
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    // console.log("Products: ", products);
+
+    const cartProducts = products.filter(p => Number(p.id) === Number(id));
+    // console.log("cartProducts: ", cartProducts);
+
+    // let cartProductItem = {};
+
+    const existing = cart.find(item => item.name === cartProducts[0].name);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        const { name, price, screen, blackCamera, frontCamera, img, desc, type } = cartProducts[0];
+        const cartProductItem = new CartItem(name, price, screen, blackCamera, frontCamera, img, desc, type);
+        cart.push(cartProductItem);
+    }
+    // Save back to localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("succeed")
+
+
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    const btnCart = document.querySelector(".total__cart");
-    if (!btnCart) return;
+    const getCartItem = () => {
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        renderAddCart(cartItems);
+    }
 
-    btnCart.addEventListener("click", (e) => {
-        e.preventDefault(); // prevent link navigation
-        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-        renderCart(cart); // show all items
-    });
+    getCartItem();
 });
 
 
-// Clear cart on page reload
+
 window.addEventListener("load", () => {
-    localStorage.removeItem("cart");      // remove only the cart
-    // or clear all localStorage: localStorage.clear();
+    // localStorage.removeItem("cartCount");
 });
+
+
+

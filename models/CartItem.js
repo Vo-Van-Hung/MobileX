@@ -9,5 +9,6 @@ export class CartItem {
         this.img = img;
         this.desc = desc;
         this.type = type;
+        this.quantity = 1;
     }
 }
